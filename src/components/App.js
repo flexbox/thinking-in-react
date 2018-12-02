@@ -5,6 +5,7 @@ import Header from './Header'
 import books from '../mocks/books'
 import Footer from './Footer'
 import About from './About'
+import BooksList from './BooksList'
 import Navbar from './Navigations/Navbar'
 
 class App extends React.Component {
@@ -51,35 +52,9 @@ class App extends React.Component {
           isOpen={this.state.menu.open}
           toggleMenu={this.toggleMenu}
         />
-
         <Navbar toggleMenu={this.toggleMenu} />
         <Header title="ReactJS Academy" />
-
-        <section id="books">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 text-center">
-                <h2>Books</h2>
-                <hr className="star-primary" />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <ul className="nav nav-pills text-center">{tabItems}</ul>
-              </div>
-            </div>
-            <div className="row book-list">
-              {this.state.books.map(book => (
-                <div className="col-xs-6 col-sm-3" key={book.id}>
-                  <div className="thumbnail">
-                    <img alt="" className="img-responsive" src={book.cover} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        <BooksList tabItems={tabItems} books={this.state.books} />
         <About />
         <Footer />
       </div>
